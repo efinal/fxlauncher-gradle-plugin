@@ -15,7 +15,7 @@
  */
 package org.kordamp.gradle.stats
 
-import no.tornado.fxlauncher.gradle.FXLauncherPlugin
+import xr.efinal.fxlauncher.gradle.FXLauncherPlugin
 import org.gradle.api.Project
 import org.gradle.api.Task
 import org.gradle.testfixtures.ProjectBuilder

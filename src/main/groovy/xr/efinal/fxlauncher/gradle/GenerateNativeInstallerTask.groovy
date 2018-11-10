@@ -1,4 +1,4 @@
-package no.tornado.fxlauncher.gradle
+package xr.efinal.fxlauncher.gradle
 
 import org.gradle.api.DefaultTask
 import org.gradle.api.GradleException

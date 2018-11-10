@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package no.tornado.fxlauncher.gradle
+package xr.efinal.fxlauncher.gradle
 
 import groovy.transform.CompileStatic
 import org.gradle.api.GradleException
@@ -24,7 +24,7 @@ import org.gradle.api.Project
  */
 @CompileStatic
 class FXLauncherExtension {
-    String fxlauncherVersion = '1.0.17'
+    String fxlauncherVersion = '1.0.20'
 
     String applicationMainClass
 

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package no.tornado.fxlauncher.gradle
+package xr.efinal.fxlauncher.gradle
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -33,7 +33,7 @@ class FXLauncherPlugin implements Plugin<Project> {
         boolean defaultDependenciesSupported = configuration.respondsTo('defaultDependencies')
         if (defaultDependenciesSupported) {
             configuration.defaultDependencies { dependencies ->
-                dependencies.add(project.dependencies.create('no.tornado:fxlauncher:' + extension.fxlauncherVersion))
+                dependencies.add(project.dependencies.create('xr.efinal:fxlauncher:' + extension.fxlauncherVersion))
             }
         }
 
@@ -45,7 +45,7 @@ class FXLauncherPlugin implements Plugin<Project> {
             }
             if (!defaultDependenciesSupported) {
                 project.dependencies {
-                    "${CONFIGURATION_NAME}"('no.tornado:fxlauncher:' + extension.fxlauncherVersion)
+                    "${CONFIGURATION_NAME}"('xr.efinal:fxlauncher:' + extension.fxlauncherVersion)
                 }
             }
         }

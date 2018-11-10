@@ -31,6 +31,7 @@ plugins {
     id 'maven'
     id 'signing'
     id 'groovy'
+    id 'maven-publish'
 }
 
 repositories {
@@ -62,7 +63,7 @@ signing {
     sign configurations.archives
 }
 
-group = "no.tornado"
+group = "xr.efinal"
 archivesBaseName = "fxlauncher-gradle-plugin"
 version = "1.0.20"
 
@@ -72,11 +73,11 @@ uploadArchives {
             beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
             repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
+                authentication(userName: hasProperty('ossrhUsername')?ossrhUsername:'', password: hasProperty('ossrhPassword')?ossrhPassword:'')
             }
 
             snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
+                authentication(userName: hasProperty('ossrhUsername')?ossrhUsername:'', password: hasProperty('ossrhPassword')?ossrhPassword:'')
             }
 
             pom.project {
@@ -115,6 +116,17 @@ uploadArchives {
     }
 }
 
+publishing {
+    publications {
+        pluginPublication (MavenPublication) {
+            from    components.java
+            groupId    project.group
+            artifactId    "fxlauncher-gradle-plugin"
+            version    project.version
+        }
+    }
+}
+
 task javadocJar(type: Jar) {
     classifier = 'javadoc'
     from javadoc
@@ -137,7 +149,7 @@ pluginBundle {
 
     plugins {
         fxlauncherPlugin {
-            id = 'no.tornado.fxlauncher'
+            id = 'xr.efinal.fxlauncher'
             displayName = 'FXLauncher Gradle plugin'
         }
     }
